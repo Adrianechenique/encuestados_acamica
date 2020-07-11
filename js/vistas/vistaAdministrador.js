@@ -21,8 +21,9 @@ var VistaAdministrador = function(modelo, controlador, elementos) {
         contexto.reconstruirLista();
     })
 
-
-
+    this.modelo.preguntasBorradas.suscribir(function() {
+        contexto.reconstruirLista();
+    })
 };
 
 
@@ -97,11 +98,12 @@ VistaAdministrador.prototype = {
 
         e.botonEditarPregunta.click(function() {
             let id = parseInt($('.list-group-item.active').attr('id'));
-            console.log(id)
             let nuevaPregunta = prompt('Ingrese la nueva pregunta')
-                // console.log(nuevaPregunta)
             contexto.controlador.editarPregunta(id, nuevaPregunta)
+        })
 
+        e.borrarTodo.click(function() {
+            contexto.controlador.borrarLasPreguntas()
         })
 
     },
