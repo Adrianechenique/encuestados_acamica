@@ -9,19 +9,11 @@ var Modelo = function() {
     this.preguntaAgregada = new Evento(this);
     this.preguntaEliminada = new Evento(this);
     this.preguntaEditada = new Evento(this); //llevar a linea 52
+    this.preguntasBorradas = new Evento(this);
 };
 
 Modelo.prototype = {
     //se obtiene el id más grande asignado a una pregunta
-    // obtenerUltimoId: function() {
-
-    //     let arrayId = this.preguntas.map(elemento => {
-    //         let $id = elemento.id;
-    //         return $id
-    //     })
-    //     let idMayor = Math.max.apply(null, arrayId);
-    //     return idMayor
-    // },
 
     obtenerUltimoId: function() {
         let ultId = -1;
@@ -34,7 +26,6 @@ Modelo.prototype = {
     },
 
 
-    //se agrega una pregunta dado un nombre y sus respuestas
     agregarPregunta: function(nombre, respuestas) {
         var id = this.obtenerUltimoId();
         id++;
@@ -59,6 +50,12 @@ Modelo.prototype = {
         this.preguntas[index].textoPregunta = nuevaPregunta;
         this.guardar();
         this.preguntaEditada.notificar(); // evento!!!
+    },
+
+    borrarTodasLasPreguntas: function() {
+        this.preguntas = [];
+        this.guardar();
+        this.preguntasBorradas.notificar(); // evento!!!
     },
 
     //se guardan las preguntas
