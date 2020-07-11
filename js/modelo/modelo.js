@@ -10,6 +10,7 @@ var Modelo = function() {
     this.preguntaEliminada = new Evento(this);
     this.preguntaEditada = new Evento(this); //llevar a linea 52
     this.preguntasBorradas = new Evento(this);
+
 };
 
 Modelo.prototype = {

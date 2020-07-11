@@ -27,6 +27,7 @@ var VistaUsuario = function(modelo, controlador, elementos) {
         contexto.reconstruirGrafico();
     })
 
+
 };
 
 VistaUsuario.prototype = {
