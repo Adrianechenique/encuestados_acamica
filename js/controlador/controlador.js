@@ -12,6 +12,10 @@ Controlador.prototype = {
 
     borrarPregunta: function(id) {
         this.modelo.eliminarPregunta(id)
+    },
+
+    editarPregunta: function(id, nuevaPregunta) {
+        this.modelo.editarPreguntaSeleccionada(id, nuevaPregunta)
     }
 
 

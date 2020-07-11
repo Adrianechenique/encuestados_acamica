@@ -16,6 +16,12 @@ var VistaAdministrador = function(modelo, controlador, elementos) {
         contexto.reconstruirLista();
     })
 
+    //evento!
+    this.modelo.preguntaEditada.suscribir(function() {
+        contexto.reconstruirLista();
+    })
+
+
 
 };
 
@@ -35,11 +41,10 @@ VistaAdministrador.prototype = {
         var nuevoItem;
         //completar
         //asignar a nuevoitem un elemento li con clase "list-group-item", id "pregunta.id" y texto "pregunta.textoPregunta"
-        nuevoItem = document.createElement('li');
         nuevoItem = $('<li>', {
-            'class': 'list-group-item',
-            'id': pregunta.id,
-            'text': pregunta.textoPregunta
+            class: 'list-group-item',
+            id: pregunta.id,
+            text: pregunta.textoPregunta
         });
 
         var interiorItem = $('.d-flex');
@@ -89,6 +94,16 @@ VistaAdministrador.prototype = {
             let id = parseInt($('.list-group-item.active').attr('id'));
             contexto.controlador.borrarPregunta(id)
         })
+
+        e.botonEditarPregunta.click(function() {
+            let id = parseInt($('.list-group-item.active').attr('id'));
+            console.log(id)
+            let nuevaPregunta = prompt('Ingrese la nueva pregunta')
+                // console.log(nuevaPregunta)
+            contexto.controlador.editarPregunta(id, nuevaPregunta)
+
+        })
+
     },
 
     limpiarFormulario: function() {
