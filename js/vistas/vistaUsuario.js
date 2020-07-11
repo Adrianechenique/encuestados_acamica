@@ -17,6 +17,11 @@ var VistaUsuario = function(modelo, controlador, elementos) {
         contexto.reconstruirGrafico();
     });
 
+    this.modelo.preguntaEditada.suscribir(function() {
+        contexto.reconstruirLista();
+        contexto.reconstruirGrafico();
+    })
+
 };
 
 VistaUsuario.prototype = {
