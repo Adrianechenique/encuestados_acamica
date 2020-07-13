@@ -27,6 +27,11 @@ var VistaUsuario = function(modelo, controlador, elementos) {
         contexto.reconstruirGrafico();
     })
 
+    this.modelo.preguntaVotada.suscribir(function() {
+        //contexto.reconstruirLista();
+        contexto.reconstruirGrafico();
+    })
+
 
 };
 
@@ -69,7 +74,15 @@ VistaUsuario.prototype = {
         var preguntas = this.modelo.preguntas;
         preguntas.forEach(function(clave) {
             //completar
-            //agregar a listaPreguntas un elemento div con valor "clave.textoPregunta", texto "clave.textoPregunta", id "clave.id"
+            //agregar a listaPreguntas un elemento div con valor "clave.textoPregunta", texto "clave.textoPregunta",
+            // id "clave.id"
+            let nuevoItem = ($('<div/>', {
+                value: clave.textoPregunta,
+                text: clave.textoPregunta,
+                id: clave.id
+            }));
+            listaPreguntas.append(nuevoItem);
+
             var respuestas = clave.cantidadPorRespuesta;
             contexto.mostrarRespuestas(listaPreguntas, respuestas, clave);
         })
@@ -97,7 +110,7 @@ VistaUsuario.prototype = {
             var id = $(this).attr('id');
             var respuestaSeleccionada = $('input[name=' + id + ']:checked').val();
             $('input[name=' + id + ']').prop('checked', false);
-            contexto.controlador.agregarVoto(nombrePregunta, respuestaSeleccionada);
+            contexto.controlador.agregarVotos(nombrePregunta, respuestaSeleccionada);
         });
     },
 
