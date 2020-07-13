@@ -20,7 +20,10 @@ Controlador.prototype = {
 
     borrarLasPreguntas: function() {
         this.modelo.borrarTodasLasPreguntas();
-    }
+    },
 
+    agregarVotos: function(nombrePregunta, respuestaSeleccionada) {
+        this.modelo.agregarVotos(nombrePregunta, respuestaSeleccionada);
+    }
 
 };
