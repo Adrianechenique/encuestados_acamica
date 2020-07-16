@@ -49,7 +49,7 @@ Modelo.prototype = {
         localStorage.setItem('preguntas', JSON.stringify(this.preguntas));
     },
 
-    eliminarPregunta: function(id) {
+    eliminarPregunta: function(idPregunta) {
         // let index = this.preguntas.find(elemento => {
         //     return elemento.id == id
         // })
